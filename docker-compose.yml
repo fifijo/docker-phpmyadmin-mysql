@@ -1,0 +1,23 @@
+services:
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-vol:/var/lib/mysql
+
+volumes:
+  db-vol:
